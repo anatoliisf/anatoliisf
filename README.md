@@ -1,4 +1,4 @@
-# Hi there, I'm Anatolii 👋
+# Hi there, I'm Nate 👋
 
 Seasoned Software Engineering Lead with entrepreneurial experience, skilled in both product-focused
 domains—e-commerce, travel, and nance—and infrastructure-focused areas such as developer
