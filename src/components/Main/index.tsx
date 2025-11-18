@@ -19,10 +19,10 @@ const socialMediaList = [
 const Main = () => {
     return (
         <S.Container>
-            <S.Title>Anatolii Kurochkin</S.Title>
+            <S.Title>Nate Kurochkin</S.Title>
             <S.Subtitle>Software Engineer</S.Subtitle>
             <S.Face>
-                <S.FaceImg src={faceImage} alt="Avatar" />
+                <S.FaceImg loading="eager" src={faceImage} alt="Avatar" />
             </S.Face>
             <S.SocialMediaList>
                 {socialMediaList.map(({ id, Component, url }) => {
