@@ -31,7 +31,9 @@ const Main = () => {
                     );
                 })}
             </div>
-            <div className={styles.copyright}>Created with ❤️</div>
+            <div className={styles.copyright}>
+                Created with <span className={styles.heart}>❤️</span>
+            </div>
         </div>
     );
 };
