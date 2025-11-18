@@ -1,0 +1,159 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100dvh;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 34px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 64px 0 12px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 45px;
+    line-height: 50px;
+    margin-bottom: 16px;
+  }
+}
+
+.subtitle {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-dark-grey);
+}
+
+@media (min-width: 1024px) {
+  .subtitle {
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 0;
+  }
+}
+
+.face {
+  width: 212px;
+  height: 232px;
+  position: relative;
+  margin: auto;
+}
+
+.face::before {
+  width: 212px;
+  height: 54px;
+  position: absolute;
+  left: 50%;
+  right: 0;
+  bottom: -14px;
+  content: '';
+  display: block;
+  margin: auto;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(117, 117, 117, 0.8) 0%,
+    rgba(117, 117, 117, 0.65) 29.69%,
+    rgba(117, 117, 117, 0.21) 70.83%,
+    rgba(117, 117, 117, 0) 100%
+  );
+  transform: translate(-50%);
+  opacity: 0.15;
+}
+
+.face::after {
+  width: 100vw;
+  height: 127px;
+  position: absolute;
+  left: 50%;
+  bottom: -56px;
+  content: '';
+  display: block;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    var(--color-dark-accent) 0%,
+    rgba(2, 136, 209, 0) 100%
+  );
+  transform: translate(-50%);
+  opacity: 0.15;
+}
+
+@media (min-width: 1024px) {
+  .face {
+    width: 274px;
+    height: 300px;
+    margin: 0 auto;
+  }
+
+  .face::before {
+    width: 352px;
+    height: 54px;
+  }
+
+  .face::after {
+    width: 692px;
+    height: 190px;
+    bottom: -60px;
+  }
+}
+
+.faceImg {
+  object-fit: contain;
+}
+
+.socialMediaList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto auto 0;
+}
+
+@media (min-width: 1024px) {
+  .socialMediaList {
+    margin: 64px auto 0;
+  }
+}
+
+.socialMedia {
+  display: block;
+  margin-right: 24px;
+  color: var(--color-text);
+}
+
+.socialMedia:first-child {
+  margin-right: 20px;
+}
+
+.socialMedia:last-child {
+  margin-right: 0;
+}
+
+.copyright {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  margin: 20px 0 32px 0;
+  text-transform: uppercase;
+  opacity: 0.7;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .copyright {
+    margin: 24px 0 32px 0;
+  }
+}
+
+

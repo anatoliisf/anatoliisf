@@ -1,18 +1,9 @@
-'use client'
-
-import { Normalize } from 'styled-normalize';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
-import { ThemeProvider } from 'styled-components';
-
-import { getTheme } from '@/styles/theme';
-import GlobalStyle from '@/styles/global';
-import { useDarkMode } from '@/hooks/useDarkMode';
 
 import Main from '../components/Main';
 
 import type { Metadata } from 'next'
-
 
 export const metadata: Metadata = {
     viewport: {
@@ -35,18 +26,12 @@ export const metadata: Metadata = {
     },
 }
 
-const Home = () => {
-    const darkMode = useDarkMode();
-    return (
-        <ThemeProvider theme={getTheme(darkMode)}>
-            <Normalize />
-            <GlobalStyle />
-            <Main />
-            <Analytics />
-            <SpeedInsights />
-        </ThemeProvider>
-
-    );
-};
+const Home = () => (
+    <>
+        <Main />
+        <Analytics />
+        <SpeedInsights />
+    </>
+);
 
 export default Home;

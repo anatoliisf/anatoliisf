@@ -1,6 +1,6 @@
-import React from 'react';
+import Image from 'next/image';
 
-import * as S from './style';
+import styles from './Main.module.scss';
 import faceImage from './images/face.png';
 import { GitHub } from './icons/GitHub';
 import { Facebook } from './icons/Facebook';
@@ -18,23 +18,23 @@ const socialMediaList = [
 
 const Main = () => {
     return (
-        <S.Container>
-            <S.Title>Nate Kurochkin</S.Title>
-            <S.Subtitle>Software Engineer</S.Subtitle>
-            <S.Face>
-                <S.FaceImg loading="eager" src={faceImage} alt="Avatar" />
-            </S.Face>
-            <S.SocialMediaList>
+        <div className={styles.container}>
+            <h1 className={styles.title}>Nate Kurochkin</h1>
+            <div className={styles.subtitle}>Software Engineer</div>
+            <div className={styles.face}>
+                <Image className={styles.faceImg} fill sizes="100vw" loading="eager" src={faceImage} alt="Avatar" />
+            </div>
+            <div className={styles.socialMediaList}>
                 {socialMediaList.map(({ id, Component, url }) => {
                     return (
-                        <S.SocialMedia key={id} href={url} target="_blank">
+                        <a key={id} href={url} target="_blank" className={styles.socialMedia}>
                             <Component />
-                        </S.SocialMedia>
+                        </a>
                     );
                 })}
-            </S.SocialMediaList>
-            <S.Copyright>Created with ❤️</S.Copyright>
-        </S.Container>
+            </div>
+            <div className={styles.copyright}>Created with ❤️</div>
+        </div>
     );
 };
 
