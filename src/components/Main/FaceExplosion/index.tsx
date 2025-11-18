@@ -25,6 +25,7 @@ const FaceExplosion = () => {
 	const hoverRef = useRef(false);
 	const mouseRef = useRef<{ x: number; y: number } | null>(null);
 	const animationRef = useRef<number | null>(null);
+	const touchTimeoutRef = useRef<number | null>(null);
 
 	useEffect(() => {
 		const canvas = canvasRef.current;
@@ -190,16 +191,19 @@ const FaceExplosion = () => {
 		<canvas
 			ref={canvasRef}
 			className={styles.faceCanvas}
-			onMouseEnter={() => {
+			onMouseEnter={(event) => {
+				// Desktop hover starts the effect
 				hoverRef.current = true;
-			}}
-			style={{
-				position: 'relative',
-				zIndex: 1,
+				const canvas = canvasRef.current;
+				if (!canvas) return;
+				const rect = canvas.getBoundingClientRect();
+				mouseRef.current = {
+					x: event.clientX - rect.left,
+					y: event.clientY - rect.top,
+				};
 			}}
 			onMouseMove={(event) => {
-				// If the page loads with the cursor already over the canvas,
-				// we may never get a mouseenter, so treat the first move as "hover on".
+				// Keep effect running while hovered, updating position
 				hoverRef.current = true;
 				const canvas = canvasRef.current;
 				if (!canvas) return;
@@ -210,6 +214,44 @@ const FaceExplosion = () => {
 				};
 			}}
 			onMouseLeave={() => {
+				// Stop effect on hover-out
+				hoverRef.current = false;
+				mouseRef.current = null;
+			}}
+			onTouchStart={(event) => {
+				const canvas = canvasRef.current;
+				if (!canvas) return;
+				const touch = event.touches[0];
+				if (!touch) return;
+				const rect = canvas.getBoundingClientRect();
+
+				hoverRef.current = true;
+				mouseRef.current = {
+					x: touch.clientX - rect.left,
+					y: touch.clientY - rect.top,
+				};
+
+				// For tap-like interaction on mobile, automatically relax back shortly after.
+				if (touchTimeoutRef.current !== null) {
+					window.clearTimeout(touchTimeoutRef.current);
+				}
+				touchTimeoutRef.current = window.setTimeout(() => {
+					hoverRef.current = false;
+					mouseRef.current = null;
+					touchTimeoutRef.current = null;
+				}, 220);
+			}}
+			onTouchEnd={() => {
+				if (touchTimeoutRef.current === null) {
+					hoverRef.current = false;
+					mouseRef.current = null;
+				}
+			}}
+			onTouchCancel={() => {
+				if (touchTimeoutRef.current !== null) {
+					window.clearTimeout(touchTimeoutRef.current);
+					touchTimeoutRef.current = null;
+				}
 				hoverRef.current = false;
 				mouseRef.current = null;
 			}}
