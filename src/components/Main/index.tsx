@@ -1,7 +1,5 @@
-import Image from 'next/image';
-
 import styles from './Main.module.scss';
-import faceImage from './images/face.png';
+import FaceExplosion from './FaceExplosion';
 import { GitHub } from './icons/GitHub';
 import { Facebook } from './icons/Facebook';
 import { Instagram } from './icons/Instagram';
@@ -22,7 +20,7 @@ const Main = () => {
             <h1 className={styles.title}>Nate Kurochkin</h1>
             <div className={styles.subtitle}>Software Engineer</div>
             <div className={styles.face}>
-                <Image className={styles.faceImg} fill sizes="100vw" loading="eager" src={faceImage} alt="Avatar" />
+                <FaceExplosion />
             </div>
             <div className={styles.socialMediaList}>
                 {socialMediaList.map(({ id, Component, url }) => {
