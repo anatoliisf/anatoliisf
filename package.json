@@ -15,17 +15,16 @@
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.3",
     "next": "^16.0.3",
+    "normalize.css": "^8.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "sharp": "^0.34.5",
-    "styled-components": "^6.1.19",
-    "styled-normalize": "^8.1.1"
+    "sass": "^1.80.6",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
-    "@types/styled-components": "^5.1.35",
     "@typescript-eslint/eslint-plugin": "^8.47.0",
     "@typescript-eslint/parser": "^8.47.0",
     "eslint-config-prettier": "^10.1.8",
