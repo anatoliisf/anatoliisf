@@ -3,6 +3,8 @@ import '@/styles/globals.scss';
 
 import React from 'react';
 
+import BackgroundSnow from '@/components/BackgroundSnow';
+
 export default function RootLayout({
 	children,
 }: {
@@ -11,6 +13,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
+				<BackgroundSnow />
 				{children}
 			</body>
 		</html>
