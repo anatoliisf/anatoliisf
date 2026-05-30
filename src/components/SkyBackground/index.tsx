@@ -3,6 +3,11 @@
 import React, { useEffect, useRef } from 'react';
 
 import {
+	applyPreviewTime,
+	applyPreviewWeather,
+	usePreview,
+} from '@/context/PreviewContext';
+import {
 	getFallbackWeather,
 	useBirthplaceTime,
 	useBirthplaceWeather,
@@ -367,6 +372,7 @@ const SkyBackground = () => {
 
 	const weatherData = useBirthplaceWeather();
 	const now = useBirthplaceTime();
+	const { condition: previewCondition, time: previewTime } = usePreview();
 
 	useEffect(() => {
 		const canvas = canvasRef.current;
@@ -395,12 +401,14 @@ const SkyBackground = () => {
 			lastTime = time;
 
 			const { width, height } = canvas;
-			const weather = weatherData ?? getFallbackWeather();
+			const baseWeather = weatherData ?? getFallbackWeather();
+			const weather = applyPreviewWeather(baseWeather, previewCondition);
+			const previewNow = applyPreviewTime(now, weather, previewTime);
 			const { sunrise, sunset, condition } = weather;
 
-			const skyColors = getSkyColorsAtTime(now, sunrise, sunset);
-			const phase = getSkyPhase(now, sunrise, sunset);
-			const celestial = getCelestialPosition(now, sunrise, sunset);
+			const skyColors = getSkyColorsAtTime(previewNow, sunrise, sunset);
+			const phase = getSkyPhase(previewNow, sunrise, sunset);
+			const celestial = getCelestialPosition(previewNow, sunrise, sunset);
 			const isNight = phase === 'night' || phase === 'dusk';
 
 			ctx.clearRect(0, 0, width, height);
@@ -515,7 +523,7 @@ const SkyBackground = () => {
 			}
 			window.removeEventListener('resize', setSize);
 		};
-	}, [weatherData, now]);
+	}, [weatherData, now, previewCondition, previewTime]);
 
 	return (
 		<div className={styles.container} aria-hidden="true">

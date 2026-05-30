@@ -4,6 +4,7 @@ import '@/styles/globals.scss';
 import React from 'react';
 
 import SkyBackground from '@/components/SkyBackground';
+import { AppProviders } from '@/components/AppProviders';
 
 export default function RootLayout({
 	children,
@@ -13,8 +14,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<SkyBackground />
-				{children}
+				<AppProviders>
+					<SkyBackground />
+					{children}
+				</AppProviders>
 			</body>
 		</html>
 	)

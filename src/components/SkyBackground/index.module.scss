@@ -52,3 +52,47 @@
       );
   }
 }
+
+:global(html[data-theme='dark']) {
+  .canvas {
+    opacity: 0.5;
+    filter: saturate(0.6) brightness(0.85);
+  }
+
+  .overlay {
+    background:
+      radial-gradient(
+        ellipse 90% 80% at 50% 40%,
+        transparent 25%,
+        color-mix(in srgb, var(--color-background) 55%, transparent) 100%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--color-background) 60%, transparent) 0%,
+        color-mix(in srgb, var(--color-background) 35%, transparent) 45%,
+        color-mix(in srgb, var(--color-background) 65%, transparent) 100%
+      );
+  }
+}
+
+:global(html[data-theme='light']) {
+  .canvas {
+    opacity: 0.65;
+    filter: saturate(0.7) brightness(1.08);
+  }
+
+  .overlay {
+    background:
+      radial-gradient(
+        ellipse 90% 80% at 50% 40%,
+        transparent 30%,
+        color-mix(in srgb, var(--color-background) 40%, transparent) 100%
+      ),
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--color-background) 50%, transparent) 0%,
+        color-mix(in srgb, var(--color-background) 25%, transparent) 45%,
+        color-mix(in srgb, var(--color-background) 55%, transparent) 100%
+      );
+  }
+}

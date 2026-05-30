@@ -34,6 +34,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   animation: title-gradient 8s ease-in-out infinite;
+  filter: drop-shadow(var(--text-shadow));
 }
 
 @keyframes title-gradient {
@@ -63,7 +64,8 @@
   margin-bottom: 20px;
   text-transform: uppercase;
   text-align: center;
-  color: var(--color-dark-grey);
+  color: var(--color-muted);
+  text-shadow: var(--text-shadow);
 }
 
 @media (min-width: 1024px) {
@@ -175,7 +177,8 @@
   position: relative;
   margin-right: 24px;
   color: var(--color-text);
-  opacity: 0.8;
+  opacity: 0.92;
+  filter: drop-shadow(var(--text-shadow));
   transition:
     color 200ms ease-out,
     transform 200ms ease-out,
@@ -231,7 +234,8 @@
   letter-spacing: 1px;
   margin: 20px 0 32px 0;
   text-transform: uppercase;
-  opacity: 0.7;
+  color: var(--color-muted);
+  text-shadow: var(--text-shadow);
   text-align: center;
 }
 
